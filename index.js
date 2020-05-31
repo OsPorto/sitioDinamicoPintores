@@ -1,55 +1,51 @@
-//Importamos los paquetes que requerimos
+//importamos los paquetes que requerimos
 const express = require('express');
 const hbs = require('hbs');
-
-//creamos la aplicacion
+//crear la aplicacion 
 const app = express();
-
 //Definimos el motor de plantillas
-//No de vamos a emplear MVC (Vista vamos a utiisar HBS)
+//no vamos a emplear el motor MVC(Vista vamos a utilizar hbs)
 app.set('view engine', 'hbs');
-
-//Vamos a generar los partials
-hbs.registerPartials(__dirname + '/views/partials');
-
-//Generamos el sitio estatico
 app.use(express.static(__dirname + '/public'));
-
-//configurar mis rutas
-app.get('/', (req, res)=>{
-    res.render('index', {
-        autor : 'Raúl Toledo',
-        year : new Date().getFullYear(),
-        title : 'Inicio'
-    });
+//vamos a generar los partials
+hbs.registerPartials(__dirname+ '/views/partials');
+//configurar rutas
+app.get('/', (req,res)=>{
+  res.render('index',{
+      autor : 'Osmar Portillo',
+      year : new Date().getFullYear(),
+      titulo : "Inicio"
+  });
 });
-
-app.get('/vangogh', (req, res)=>{
-    res.render('vincent', {
-        autor : 'Yo mero y que',
-        year : new Date().getFullYear(),
-        title : 'Vincent Van Gogh'
-    });
+app.get('/vincent', (req, res)=>{
+  res.render('vancogh', {
+      autor : 'Osmar Portillo',
+      year : new Date().getFullYear(),
+      title : 'Vincent Van Gogh'
+  });
 });
-
 app.get('/salvador', (req, res)=>{
-    res.render('dali', {
-        autor : 'Lord Voldemort',
-        year : new Date().getFullYear(),
-        title : 'Salvador Dalí'
-    });
+  res.render('dali', {
+      autor : 'Osmar Portillo',
+      year : new Date().getFullYear(),
+      title : 'Salvador dali'
+  });
 });
-
-app.get('/kand', (req, res)=>{
-    res.render('kandisky', {
-        autor : 'Gandalf el gris',
-        year : new Date().getFullYear(),
-        title : 'Vasili Kandinski',
-        algo : "No se que poner"
-    });
+app.get('/pablo', (req, res)=>{
+  res.render('picasso', {
+      autor : 'Osmar Portillo',
+      year : new Date().getFullYear(),
+      title : 'Pablo Picasso'
+  });
 });
-
-//Arrancamos el servisdor web
+app.get('/warjol', (req, res)=>{
+  res.render('andi', {
+      autor : 'Osmar Portillo',
+      year : new Date().getFullYear(),
+      title : 'Andi Warhol'
+  });
+});
+//arrancamos el servidor web
 app.listen(3000, ()=>{
-    console.log('Escuchando el puerto 3000');
+  console.log('escuchando el puerto 3000');
 });
